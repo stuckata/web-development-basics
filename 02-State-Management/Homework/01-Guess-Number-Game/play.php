@@ -17,11 +17,12 @@ if(!isset($_SESSION['username'])){
 if(isset($_POST['submitNumber'])){
 
     $number = intval($_POST['number']);
+    $_SESSION['win'] = false;
 
     if(is_int($number) && $number > 0 && $number < 101){
         if($number == $_SESSION['randomNumber']){
-            echo '<h1>Congratulations, ' . $_SESSION['username'] . '</h1><br>';
-            echo '<input type="submit" name="playAgain" value="Play Again">';
+            $_SESSION['win'] = true;
+            header("Location: win.php");
         } else if($number < $_SESSION['randomNumber']){
             echo '<h1>Down</h1>';
         } else {
