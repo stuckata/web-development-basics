@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$_SESSION['win'] = false;
 var_dump($_SESSION['randomNumber']);
 if(!isset($_SESSION['username'])){
     header("Location: index.php");
@@ -17,7 +18,6 @@ if(!isset($_SESSION['username'])){
 if(isset($_POST['submitNumber'])){
 
     $number = intval($_POST['number']);
-    $_SESSION['win'] = false;
 
     if(is_int($number) && $number > 0 && $number < 101){
         if($number == $_SESSION['randomNumber']){
